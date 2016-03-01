@@ -1,0 +1,661 @@
+//Media queries
+#overlays {
+  display: none;
+  .overs {
+    padding: 10px;
+    background: #fff;
+  }
+}
+#colorbox {
+  &.ganadores {
+    overflow: initial;
+  }
+}
+.procesando {
+  #cboxLoadingOverlay, .cboxIframe, #cboxContent {
+    background-color: #11235d;
+  }
+  #cboxClose, #cboxLoadingOverlay {
+    display: none !important;
+  }
+  .img-preloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -35%;
+    width: 70%;
+    height: 32px;
+    line-height: 32px;
+    background: url("../images/loader-proceso.gif") no-repeat center;
+  }
+}
+.ganadores {
+  letter-spacing: -1px;
+  overflow: inherit !important;
+
+  #cboxWrapper {
+    overflow: inherit !important;
+  }
+  #cboxContent {
+    overflow: inherit !important;
+  }
+
+  #cboxLoadingOverlay, .cboxIframe, #cboxContent {
+    overflow: initial;
+    background-color: #11235d;
+    @media screen and (min-width: 320px) {
+      background-color: #ffffff;
+    }
+    @media screen and (min-width: 768px) {
+      background-color: #11235d;
+    }
+  }
+  #cboxContent, #cboxWrapper {
+    overflow: initial;
+  }
+  #cboxClose {
+    width: 47px;
+    height: 47px;
+    top: -23px;
+    right: -66px;
+    background: url("../images/btnCerrarb.png") 0 0 no-repeat;
+    @media screen and (min-width: 320px) {
+      width: 24px;
+      height: 24px;
+      top: 11px;
+      right: 11px;
+      background-image: url("../images/btnCloseResp.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    @media screen and (min-width: 768px) {
+      width: 47px;
+      height: 47px;
+      top: -23px;
+      right: -66px;
+      background: url("../images/btnCerrarb.png") 0 0 no-repeat;
+      z-index: 9999;
+      display: block;
+    }
+
+  }
+  #over_ganadores {
+    margin: 10px;
+    @media screen and (min-width: 320px) {
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #998d5d;
+      //min-height: 315px;
+      min-height: 100%;
+    }
+    @media screen and (min-width: 343px) {
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #998d5d;
+      //min-height: 315px;
+      min-height: 100%;
+    }
+    @media screen and (min-width: 360px) {
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #998d5d;
+      //min-height: 367px;
+      min-height: 100%;
+    }
+    @media screen and (min-width: 480px) {
+      margin: 10px;
+      padding: 0 15px;
+      border: 1px solid #998d5d;
+      //min-height: 326px;
+      min-height: 100%;
+    }
+    @media screen and (min-width: 640px) {
+      //min-height: 262px;
+      min-height: 100%;
+      padding: 0 15px;
+    }
+    /*
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      min-height: 378px;
+    }
+    */
+    @media screen and (min-width: 768px) {
+      border: none;
+      min-height: inherit;
+    }
+  }
+  #cboxLoadedContent {
+    overflow: inherit !important;
+  }
+  h3, h4, p, a {
+    color: #ffffff;
+    text-align: center;
+    @media screen and (min-width: 320px) {
+      color: #34376e;
+    }
+    @media screen and (min-width: 768px) {
+      color: #ffffff;
+    }
+    /*@media screen and (min-device-width: 360px) {
+      background-color: fuchsia;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      background-color: palevioletred;
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+      background-color: green;
+    }
+    @media screen and (min-width: 480px) {
+      background-color: greenyellow;
+    }
+    @media screen and (min-width: 560px) {
+      background-color: purple;
+    }
+    @media screen and (min-width: 640px) {
+      background-color: red;
+    }
+    @media screen and (min-width: 768px) {
+      background-color: red;
+    }
+    @media screen and (min-width: 1024px) {
+      background-color: yellow;
+    }*/
+  }
+  h3 {
+    font-family: 'gotham_boldregular';
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-top: 35px;
+    @media screen and (min-width: 320px) {
+      font-size: 14px;
+    }
+    @media screen and (min-width: 343px) {
+      font-size: 13px;
+    }
+    @media screen and (min-device-width: 360px) {
+      font-size: 15px;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      font-size: 16px;
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+      font-size: 18px;
+    }
+    /*@media screen and (min-width: 480px) {
+      background-color: greenyellow;
+    }
+    @media screen and (min-width: 560px) {
+      background-color: purple;
+    }*/
+    @media screen and (min-width: 640px) {
+     /* background-color: red;*/
+      font-size: 15px;
+    }
+    @media screen and (min-width: 768px) {
+      /*background-color: red;*/
+      font-size: 18px;
+    }
+    @media screen and (min-width: 1024px) {
+      /*background-color: yellow;*/
+      font-size: 18px;
+    }
+  }
+  h4 {
+    font-family: 'gothambook';
+    font-size: 18px;
+    @media screen and (min-width: 320px) {
+      font-size: 14px;
+    }
+    @media screen and (min-device-width: 360px) {
+      font-size: 14px;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      font-size: 16px;
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+      font-size: 18px;
+    }
+    /*@media screen and (min-width: 480px) {
+      background-color: greenyellow;
+    }
+    @media screen and (min-width: 560px) {
+      background-color: purple;
+    }*/
+    @media screen and (min-width: 640px) {
+      /*background-color: red;*/
+      font-size: 14px;
+    }
+    @media screen and (min-width: 768px) {
+      /*background-color: red;*/
+      font-size: 18px;
+    }
+    @media screen and (min-width: 1024px) {
+      /*background-color: yellow;*/
+      font-size: 18px;
+    }
+  }
+  p {
+    font-family: 'gothambook';
+    font-size: 18px;
+    &.text-medium {
+      font-size: 16px;
+      @media screen and (min-width: 320px) {
+        color: #34376e;
+        font-size: 14px;
+      }
+      @media screen and (min-device-width: 360px) {
+        font-size: 14px;
+      }
+      @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+        font-size: 16px;
+      }
+      @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+        font-size: 18px;
+      }
+      @media screen and (min-width: 768px) {
+        color: #ffffff;
+      }
+      /*@media screen and (min-width: 480px) {
+        background-color: greenyellow;
+      }
+      @media screen and (min-width: 560px) {
+        background-color: purple;
+      }*/
+      @media screen and (min-width: 640px) {
+        /*background-color: red;*/
+        font-size: 14px;
+      }
+     /* @media screen and (min-width: 768px) {
+        background-color: darkred;
+      }
+      @media screen and (min-width: 1024px) {
+        background-color: yellow;
+      }*/
+    }
+    @media screen and (min-width: 320px) {
+      font-size: 14px;
+    }
+    @media screen and (min-device-width: 360px) {
+      font-size: 14px;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      font-size: 16px;
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+      font-size: 18px;
+    }
+  }
+  .btnAqui {
+    font-family: 'gotham_boldregular';
+    font-size: 19px;
+    color: #968a57;
+    width: 116px;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #968a57;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    &:focus, &:hover {
+      margin-bottom: 20px;
+      @media screen and (min-width: 320px) {
+        margin-bottom: 10px;
+      }
+      @media screen and (min-width: 768px) {
+        margin-bottom: 20px;
+      }
+    }
+    @media screen and (min-width: 320px) {
+      background-color: #998d5d;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    @media screen and (min-width: 768px) {
+      background-color: transparent;
+      color: #968a57;
+      margin-bottom: 20px;
+    }
+  }
+}
+.listo {
+  #cboxContent, #cboxWrapper, #cboxLoadedContent {
+    overflow: initial !important;
+  }
+  #over_listo {
+    border: 2px solid #998d5d;
+    margin: 7px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    @media screen and (min-width: 320px) {
+      width: 306px;
+      height: 424px;
+      overflow-y: visible;
+    }
+    @media screen and (min-width: 343px) {
+      width: 329px;
+      height: 424px;
+      overflow-y: visible;
+    }
+    @media screen and (min-width: 360px) {
+      width: 346px;
+      height: 424px;
+      overflow-y: visible;
+    }
+    @media only screen and (min-width: 375px) {
+      width: 361px;
+      height: 424px;
+      overflow-y: visible;
+    }
+    @media screen and (min-width: 384px) {
+      width: 370px;
+      height: 424px;
+      overflow-y: visible;
+    }
+    /*
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      width: 361px;
+      height: 424px;
+      overflow-y: visible;
+    }
+    */
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+    }
+    @media screen and (min-width: 480px) {
+      width: 466px;
+      height: 424px;
+    }
+    @media screen and (min-width: 560px) {
+      width: 554px;
+      height: 424px;
+    }
+    @media screen and (min-width: 564px) {
+      width: 550px;
+      height: 424px;
+    }
+    @media screen and (min-width: 568px) {
+      width: 554px;
+      height: 424px;
+    }
+    @media screen and (min-width: 598px) {
+      width: 584px;
+      height: 425px;
+    }
+    @media screen and (min-width: 600px) {
+      width: 586px;
+      height: 573px;
+    }
+    @media screen and (min-width: 640px) {
+      width: 626px;
+      height: 573px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 754px;
+
+    }
+    @media screen and (min-width: 960px) {
+      width: 936px;
+      height: 760px;
+      overflow: hidden;
+    }
+    @media screen and (min-width: 1024px) {
+      /*height: 771px;*/
+      height: 760px;
+      overflow: hidden;
+    }
+  }
+  #cboxClose {
+    width: 48px;
+    height: 45px;
+    top: 7px;
+    right: 7px;
+    background: url("../images/btnCerrarMCrear.png") no-repeat;
+    background-size: cover;
+    z-index: 9999;
+    @media screen and (min-width: 320px) {
+      width: 35px;
+      height: 33px;
+    }
+    @media screen and (min-width: 360px) {
+      width: 35px;
+      height: 33px;
+    }
+    @media only screen and (min-width: 375px) {
+      width: 35px;
+      height: 33px;
+    }
+    @media screen and (min-width: 384px) {
+      width: 35px;
+      height: 33px;
+    }
+    @media screen and (min-width: 480px) {
+      width: 48px;
+      height: 45px;
+    }
+    @media screen and (min-width: 560px) {
+      width: 48px;
+      height: 45px;
+    }
+    @media screen and (min-width: 600px) {
+      width: 48px;
+      height: 45px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 48px;
+      height: 45px;
+    }
+    @media screen and (min-width: 960px) {
+      width: 48px;
+      height: 45px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 48px;
+      height: 45px;
+    }
+  }
+  .left, .right {
+    float: left;
+  }
+  .left {
+
+    @media screen and (min-width: 320px) {
+      width: 100%;
+      margin: 0 0 5px 0;
+    }
+    @media screen and (min-width: 360px) {
+      width: 100%;
+      /*margin-top: 84px;
+      margin-left: 102px;
+      margin-right: 99px;*/
+      margin: 0 0 5px 0;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+    }
+    @media screen and (min-width: 480px) {
+
+    }
+    @media screen and (min-width: 560px) {
+
+    }
+    @media screen and (min-width: 568px) {
+
+    }
+    @media screen and (min-width: 598px) {
+      width: 48%;
+      margin: 50px 0 5px 0;
+    }
+    @media screen and (min-width: 600px) {
+      width: 100%;
+      margin: 5px 0 5px 0;
+    }
+    @media screen and (min-width: 768px) {
+      width: 430px;
+      margin-top: 55px;
+    }
+    @media screen and (min-width: 960px) {
+      width: 430px;
+      margin-top: 84px;
+      margin-left: 102px;
+      margin-right: 99px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 430px;
+      margin-top: 84px;
+      margin-left: 102px;
+      margin-right: 99px;
+    }
+  }
+  .right {
+    a {
+      &#btnRehacer{
+        background: url("../images/bg-btnrehacer.png") no-repeat;
+        background-size: cover;
+      }
+      &#btnVerGaleria{
+        background: url("../images/bg-btngaleria.png") no-repeat;
+        background-size: cover;
+      }
+      &#btnGuardar{
+        background: url("../images/bg-btnguardar.png") no-repeat;
+        background-size: cover;
+      }
+      &#btnCompartir{
+        background: url("../images/bg-btncompartir.png") no-repeat;
+        background-size: cover;
+      }
+      @media screen and (min-width: 320px) {
+        width: 140px;
+        display: block;
+        height: 35px;
+        //margin: 0 auto 15px;
+        margin: 8px 0 0 8px;
+        float: left;
+      }
+      @media screen and (min-width: 360px) {
+        width: 148px;
+        display: block;
+        height: 37px;
+        margin: 8px 0 0 15px;
+      }
+      @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+      }
+      @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+      }
+      @media screen and (min-width: 480px) {
+
+      }
+      @media screen and (min-width: 560px) {
+
+      }
+      @media screen and (min-width: 600px) {
+
+      }
+      @media screen and (min-width: 1024px) {
+        width: 196px;
+        height: 50px;
+        display: inline-block;
+        margin-bottom: 29px;
+      }
+    }
+    @media screen and (min-width: 320px) {
+      width: 100%;
+      text-align: center;
+      margin: 5px auto 0;
+      float: left;
+    }
+    @media screen and (min-width: 360px) {
+      width: 100%;
+      text-align: center;
+      margin: 5px auto 0;
+      float: left;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+    }
+    @media screen and (min-width: 480px) {
+      width: 76%;
+      text-align: center;
+      margin: 5px auto 0;
+      float: inherit;
+    }
+    @media screen and (min-width: 560px) {
+      width: 65%;
+      text-align: center;
+      margin: 5px auto 0;
+      float: inherit;
+    }
+    @media screen and (min-width: 568px) {
+      width: 65%;
+      text-align: center;
+      margin: 5px auto 0;
+      float: inherit;
+    }
+    @media screen and (min-width: 598px) {
+      width: 44%;
+      text-align: center;
+      margin: 102px auto 0;
+      float: left;
+    }
+    @media screen and (min-width: 600px) {
+      width: 59%;
+      float: inherit;
+      margin: 5px auto 0;
+    }
+    @media screen and (min-width: 768px) {
+      width: 196px;
+      margin-top: 180px;
+      text-align: center;
+      float: left;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 196px;
+      margin-top: 275px;
+      text-align: center;
+    }
+  }
+  #prev-motivo {
+
+    @media screen and (min-width: 320px) {
+      width: 212px;
+      display: block;
+      margin: 5px auto;
+    }
+    @media screen and (min-width: 360px) {
+      width: 218px;
+      display: block;
+      margin: 5px auto;
+    }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+    }
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+    }
+    @media screen and (min-width: 480px) {
+
+    }
+    @media screen and (min-width: 560px) {
+
+    }
+    @media screen and (min-width: 600px) {
+      width: 310px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 430px;
+      height: 600px;
+    }
+  }
+}

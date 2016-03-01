@@ -1,0 +1,52 @@
+@charset "utf-8";
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+input[placeholder],
+textarea[placeholder] {
+  color: #ffffff;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #ffffff;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder { /* Older versions of Firefox */
+  color: #ffffff;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #ffffff;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+a, input[type="submit"] {
+  &:hover {
+    transition: background 0.2s ease-in-out;
+    -moz-transition: background 0.2s ease-in-out;
+    -webkit-transition: background 0.2s ease-in-out;
+    -o-transition: background 0.2s ease-in-out;
+  }
+}
+img {
+  height: auto;
+  max-width: 100%;
+}
