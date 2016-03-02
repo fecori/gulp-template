@@ -153,4 +153,4 @@ gulp.task('watch', function () {
 	gulp.watch('source/images/**/*', ['image-compress']);
 });
 
-gulp.task('default', ['watch', 'styles', 'fonts', 'templates', 'scripts-ie', 'coffee', 'javascript', 'modernizr']);
+gulp.task('default', ['watch', 'styles', 'fonts', 'templates', 'scripts-ie', 'coffee', 'javascript', 'modernizr', 'image-compress']);
