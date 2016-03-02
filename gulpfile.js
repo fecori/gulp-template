@@ -12,12 +12,33 @@ var env = process.env.NODE_ENV || 'development',
 	plumber = require('gulp-plumber'),
 	concat = require('gulp-concat'),
 	gutil = require('gulp-util'),
+	del = require("del"),
+	sequence = require("gulp-sequence"),
 	notify = require("gulp-notify");
+
+var publicDir = "dist",
+	src = {
+		sass: "source/sass/*.scss",
+		coffee: "source/coffeescript/**/*",
+		js: "source/javascript/",
+		jade: "source/layouts/*.jade",
+		img: "source/images/**/*",
+		fonts: "source/css/fonts/**/*",
+		plugins: "source/javascript/plugins/**/*.js",
+		libsie: "source/javascript/libs-ie/**/*.js"
+	},
+	dist = {
+		all: publicDir + "/**/*",
+		css: publicDir + "/css/",
+		js: publicDir + "/js/",
+		img: publicDir + "/images/",
+		fonts: publicDir + "/css/fonts/"
+	};
 
 /* Jade */
 gulp.task('templates', function () {
 	var local = {};
-	gulp.src('source/layouts/*.jade')
+	gulp.src(src.jade)
 		.pipe(plumber({
 			errorHandler: function (error) {
 				console.log(error.message);
@@ -31,7 +52,7 @@ gulp.task('templates', function () {
 		.pipe(htmlmin({
 			collapseWhitespace: true
 		}))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest(publicDir))
 		.pipe(notify({
 			"title": "Jade",
 			"message": "<%= file.relative %>"
@@ -43,7 +64,7 @@ gulp.task('styles', function () {
 	var config = {
 		outputStyle: 'compressed'
 	};
-	return gulp.src('source/sass/*.scss')
+	return gulp.src(src.sass)
 		.pipe(plumber({
 			errorHandler: function (error) {
 				console.log(error.message);
@@ -52,7 +73,7 @@ gulp.task('styles', function () {
 		}))
 		.pipe(sass(config))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('dist/css'))
+		.pipe(gulp.dest(dist.css))
 		.pipe(notify({
 			"title": "Styles",
 			"message": "<%= file.relative %>"
@@ -61,7 +82,7 @@ gulp.task('styles', function () {
 
 /* CoffeeScript */
 gulp.task('coffee', function () {
-	return gulp.src('source/coffeescript/**/*')
+	return gulp.src(src.coffee)
 		.pipe(plumber({
 			errorHandler: function (error) {
 				console.log(error.message);
@@ -69,7 +90,7 @@ gulp.task('coffee', function () {
 			}
 		}))
 		.pipe(coffee({bare: true}).on('error', gutil.log))
-		.pipe(gulp.dest('source/javascript/'));
+		.pipe(gulp.dest(src.js));
 });
 
 /* Javascript Final */
@@ -82,7 +103,7 @@ gulp.task('javascript', function () {
 		.pipe(concat('apps.js', {newLine: ';'}))
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('dist/js/'))
+		.pipe(gulp.dest(dist.js))
 		.pipe(notify({
 			"title": "Javascript Final",
 			"message": "<%= file.relative %>"
@@ -91,11 +112,11 @@ gulp.task('javascript', function () {
 
 /*Tarea para concatenar Js con compatibilidad IE*/
 gulp.task('scripts-ie', function () {
-	return gulp.src('source/javascript/libs-ie/**/*.js')
+	return gulp.src(src.libsie)
 		.pipe(concat('libs-ie.js', {newLine: ';'}))
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('dist/js/'))
+		.pipe(gulp.dest(dist.js))
 		.pipe(notify({
 			"title": "Js con compatibilidad IE",
 			"message": "<%= file.relative %>"
@@ -107,7 +128,7 @@ gulp.task('modernizr', function () {
 	return gulp.src('source/javascript/modernizr.js')
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('dist/js/'))
+		.pipe(gulp.dest(dist.js))
 		.pipe(notify({
 			"title": "Modernizr",
 			"message": "<%= file.relative %>"
@@ -116,13 +137,13 @@ gulp.task('modernizr', function () {
 
 /* Copiar Fonts a dist */
 gulp.task('fonts', function () {
-	return gulp.src('source/sass/fonts/**/*')
-		.pipe(gulp.dest('dist/css/fonts'));
+	return gulp.src(src.fonts)
+		.pipe(gulp.dest(dist.fonts));
 });
 
 /*Compresor de imagenes*/
 gulp.task('image-compress', function () {
-	return gulp.src('source/images/**/*')
+	return gulp.src(src.img)
 		.pipe(imagemin({
 			progressive: true,
 			interlaced: true,
@@ -135,22 +156,28 @@ gulp.task('image-compress', function () {
 				speed: 4
 			})]
 		}))
-		.pipe(gulp.dest('dist/images'))
+		.pipe(gulp.dest(dist.img))
 		.pipe(notify({
 			"title": "Compresor de imagenes",
 			"message": "<%= file.relative %>"
 		}));
 });
 
-gulp.task('watch', function () {
-	gulp.watch('source/layouts/**/*.jade', ['templates']);
-	gulp.watch('source/sass/**/*.scss', ['styles']);
-	gulp.watch('source/sass/fonts/**/*', ['fonts']);
-	gulp.watch('source/coffeescript/**/*.coffee', ['coffee']);
-	gulp.watch('source/javascript/*.js', ['javascript']);
-	gulp.watch('source/javascript/plugins/**/*.js', ['javascript']);
-	gulp.watch('source/javascript/libs-ie/**/*.js', ['scripts-ie']);
-	gulp.watch('source/images/**/*', ['image-compress']);
+/* Limpiando carpeta dist */
+gulp.task('clean', function (cb) {
+	del(dist.all, cb);
 });
 
-gulp.task('default', ['watch', 'styles', 'fonts', 'templates', 'scripts-ie', 'coffee', 'javascript', 'modernizr', 'image-compress']);
+/* A la espera de alguna modificacion en los siguientes folders */
+gulp.task('watch', function () {
+	gulp.watch(src.jade, ['templates']);
+	gulp.watch(src.sass, ['styles']);
+	gulp.watch(src.fonts, ['fonts']);
+	gulp.watch(src.coffee, ['coffee']);
+	gulp.watch(src.js, ['javascript']);
+	gulp.watch(src.plugins, ['javascript']);
+	gulp.watch(src.libsie, ['scripts-ie']);
+	gulp.watch(src.img, ['image-compress']);
+});
+
+gulp.task('default', ['clean', 'watch', 'styles', 'fonts', 'templates', 'scripts-ie', 'coffee', 'javascript', 'modernizr', 'image-compress']);
