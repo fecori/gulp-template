@@ -1,6 +1,8 @@
 {
   "name": "gulp-template",
   "version": "1.0.0",
+  "description": "descripcion del proyecto",
+  "author": "Francisco Cordova Rios - fcordova@anacondabox.com",
   "dependencies": {},
   "devDependencies": {
     "gulp": "3.9.0",

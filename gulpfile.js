@@ -18,7 +18,12 @@ var env = process.env.NODE_ENV || 'development',
 gulp.task('templates', function () {
 	var local = {};
 	gulp.src('source/layouts/*.jade')
-		.pipe(plumber())
+		.pipe(plumber({
+			errorHandler: function (error) {
+				console.log(error.message);
+				this.emit('end');
+			}
+		}))
 		.pipe(jade({
 			locals: local,
 			pretty: env === 'development'
@@ -39,7 +44,12 @@ gulp.task('styles', function () {
 		outputStyle: 'compressed'
 	};
 	return gulp.src('source/sass/*.scss')
-		.pipe(plumber())
+		.pipe(plumber({
+			errorHandler: function (error) {
+				console.log(error.message);
+				this.emit('end');
+			}
+		}))
 		.pipe(sass(config))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('dist/css'))
@@ -52,7 +62,12 @@ gulp.task('styles', function () {
 /* CoffeeScript */
 gulp.task('coffee', function () {
 	return gulp.src('source/coffeescript/**/*')
-		.pipe(plumber())
+		.pipe(plumber({
+			errorHandler: function (error) {
+				console.log(error.message);
+				this.emit('end');
+			}
+		}))
 		.pipe(coffee({bare: true}).on('error', gutil.log))
 		.pipe(gulp.dest('source/javascript/'));
 });
@@ -110,6 +125,8 @@ gulp.task('image-compress', function () {
 	return gulp.src('source/images/**/*')
 		.pipe(imagemin({
 			progressive: true,
+			interlaced: true,
+			optimizationLevel: 3,
 			svgoPlugins: [{
 				removeViewBox: false
 			}],
