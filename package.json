@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "descripcion del proyecto",
   "author": "Francisco Cordova Rios - fcordova@anacondabox.com",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "gulp": "3.9.0",
     "gulp-notify": "2.2.0",
     "gulp-coffee": "2.3.1",
-    "gulp-jade": "1.1.0",
+    "gulp-pug": "^4.0.1",
     "gulp-sass": "2.2.0",
     "gulp-concat": "2.6.0",
     "gulp-plumber": "1.1.0",
